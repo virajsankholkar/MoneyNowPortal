@@ -3,7 +3,7 @@
 * Author - Viraj S Sankholkar
 * Date - 02/20/2018
 */
-
+//Test comment
 //Javascript method toggle radio button when User enters into "Other Amount" textbox.
 //Parameters passed - N/A
 function onEnter() {
