@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\StringCipher.cs" />
+    <Compile Include="Helpers\Utils.cs" />
     <Compile Include="Models\AccountDetails.cs" />
     <Compile Include="Models\CardDetails.cs" />
     <Compile Include="Constants.cs" />

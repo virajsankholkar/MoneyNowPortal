@@ -92,7 +92,11 @@ function AddNewAccount()
         var accountDescriptionVal = $("#accountDescription").val();
         var accountEffectiveDateVal = $("#accountEffectiveDate").val();
 
-        var sdata = "{ 'AccountName':'" + accountNameVal + "', 'AccountType':" + accountTypeNameVal + ", 'Description':'" + accountDescriptionVal + "', 'EffectiveDate':'" + accountEffectiveDateVal + "' }";
+        var sdata = '{ "AccountName":"' + accountNameVal 
+            + '", "AccountType":"' + accountTypeNameVal
+            + '", "Description":"' + accountDescriptionVal
+            + '", "EffectiveDate":"' + accountEffectiveDateVal
+            + '" }';
         //alert(sdata);
 
         $.ajax({
@@ -146,7 +150,7 @@ function UpdateAccountAlias(ID) {
     var accountIDVal = $("#accountID" + ID).val();
     var newAccountAliasNameVal = $("#newAccountAliasName" + ID).val();    
 
-    var sdata = "{'AccountID':" + accountIDVal + ", 'NewAlias':'" + newAccountAliasNameVal + "'}";
+    var sdata = '{"AccountID":' + accountIDVal + ', "NewAlias":"' + newAccountAliasNameVal + '"}';
     //alert(sdata);
 
     $.ajax({
@@ -195,7 +199,7 @@ function RequestAccountChangeStatus(ID) {
     var accountDescriptionVal = $("#accountDescription" + ID).val();
     var accountEffectiveDateVal = $("#accountEffectiveDate" + ID).val();
 
-    var sdata = "{ 'AccountID': " + accountIDVal + ", 'NewStatus': '" + accountTypeOfChangeVal + "', 'Description': '" + accountDescriptionVal + "', 'EffectiveDate': '" + accountEffectiveDateVal + "' }";
+    var sdata = '{ "AccountID": ' + accountIDVal + ', "NewStatus": "' + accountTypeOfChangeVal + '", "Description": "' + accountDescriptionVal + '", "EffectiveDate": "' + accountEffectiveDateVal + '" }';
     //alert(sdata);
 
     $.ajax({
@@ -250,8 +254,7 @@ function RequestCardAccountChangeStatus(ID) {
     var accountDescriptionVal = $("#accountDescription" + ID).val();
     var accountEffectiveDateVal = $("#accountEffectiveDate" + ID).val();
 
-    //var sdata = '{ "accountID": ' + accountIDVal + ', "accountTypeOfChange": ' + accountTypeOfChangeVal + ', "accountDescription": ' + accountDescriptionVal + ', "accountEffectiveDate": ' + accountEffectiveDateVal + ' }';
-    var sdata = "{ 'AccountID': " + accountIDVal + ", 'NewStatus': '" + accountTypeOfChangeVal + "', 'Description': '" + accountDescriptionVal + "', 'EffectiveDate': '" + accountEffectiveDateVal + "' }";
+    var sdata = '{ "AccountID": ' + accountIDVal + ', "NewStatus": "' + accountTypeOfChangeVal + '", "Description": "' + accountDescriptionVal + '", "EffectiveDate": "' + accountEffectiveDateVal + '" }';
 
     //alert(sdata);
 

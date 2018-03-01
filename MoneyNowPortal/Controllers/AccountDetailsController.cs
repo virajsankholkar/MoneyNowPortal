@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using OmniDataManagement;
+using OmniDataManagement.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -65,6 +66,7 @@ namespace MoneyNowPortal.Controllers
         [HttpPost]
         public async Task<ActionResult> AddNewAccountDetails(string myParams)
         {
+            var cleanParam = myParams.Replace("'", "\u0027");
             LoginResponseDetails userLoginDetails = GetUserLoginDetails();
             try
             {
@@ -75,7 +77,7 @@ namespace MoneyNowPortal.Controllers
                 {
                     OmniDataItemAPI injector = new OmniDataItemAPI(_WebAPIURL);
 
-                    dynamic stuff = JsonConvert.DeserializeObject(myParams);
+                    dynamic stuff = JsonConvert.DeserializeObject(cleanParam);
                     var requestObjectAdd = JsonConvert.DeserializeObject<RequestAccountAdd>(stuff);                  
 
                     RequestAccountAdd requestObject = new RequestAccountAdd();
@@ -106,6 +108,8 @@ namespace MoneyNowPortal.Controllers
             LoginResponseDetails userLoginDetails = GetUserLoginDetails();
             try
             {
+                var cleanParam = myParams.Replace("'", "\u0027");
+
                 if (!await AuthorizePage("ModifyAccount"))
                     return RedirectToAction("NoAccess", "Home");
 
@@ -113,8 +117,8 @@ namespace MoneyNowPortal.Controllers
                 {
                     OmniDataItemAPI injector = new OmniDataItemAPI(_WebAPIURL);
 
-                    dynamic stuff = JsonConvert.DeserializeObject(myParams);
-                    RequestAccountAlias requestObject = new RequestAccountAlias();                    
+                    dynamic stuff = JsonConvert.DeserializeObject(cleanParam);                    
+                    RequestAccountAlias requestObject = new RequestAccountAlias();
                     requestObject = JsonConvert.DeserializeObject<RequestAccountAlias>(stuff);
                     GenericResponse returnObject = await injector.UpdateAccountsAliasFromAPI(userLoginDetails.Token, requestObject);
 
@@ -136,6 +140,8 @@ namespace MoneyNowPortal.Controllers
         [HttpPost]
         public async Task<ActionResult> RequestAccountChangeStatus(string myParams)
         {
+            var cleanParam = myParams.Replace("'", "\u0027");
+
             LoginResponseDetails userLoginDetails = GetUserLoginDetails();
             try
             {
@@ -147,7 +153,7 @@ namespace MoneyNowPortal.Controllers
                     OmniDataItemAPI injector = new OmniDataItemAPI(_WebAPIURL);
 
                     RequestAccountStatus requestObject = new RequestAccountStatus();
-                    dynamic stuff = JsonConvert.DeserializeObject(myParams);
+                    dynamic stuff = JsonConvert.DeserializeObject(cleanParam);
                     requestObject = JsonConvert.DeserializeObject<RequestAccountStatus>(stuff);
 
                     /*requestObject.AccountID = Convert.ToInt32(requestObjectAdd.AccountID);

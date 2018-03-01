@@ -232,6 +232,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\blackcard\theme.css" />
     <Content Include="Content\css\moneynow\theme.css" />
+    <Content Include="Content\images\ajax-loader.gif" />
     <Content Include="Content\images\blackcard\card-designs\cash-card-back.png" />
     <Content Include="Content\images\blackcard\card-designs\cash-card-front.png" />
     <Content Include="Content\images\blackcard\favicon.ico" />

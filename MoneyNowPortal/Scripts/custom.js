@@ -32,4 +32,10 @@ $(document).ready(function($) {
     function displayCustomBGImage() {
         $("body").css("background-image", "url(../Content/images/home-bg.png)").css("background-size", "cover");
     }
+
+    $(".nav-item, .main-links").click(function () {
+        $("#pleaseWaitDialog").show();
+    });
+
 });
+

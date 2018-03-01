@@ -10,3 +10,7 @@ function onEnter() {
     var radiobtn = document.getElementById("max");
     radiobtn.checked = true;
 }
+
+$('input[id=min]').change(function () {    
+    $('#otherAmount').val('');
+});

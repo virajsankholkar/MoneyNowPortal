@@ -12,8 +12,11 @@ namespace MoneyNowPortal.Controllers
 {
     public class HomeController : BaseController
     {        
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
+            if (!await AuthorizePage("MyAccount"))
+                return RedirectToAction("Login", "Home");
+
             return View();
         }
 

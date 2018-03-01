@@ -1,4 +1,4 @@
-@model OmniDataManagement.LoginRequestDetails
+﻿@model OmniDataManagement.LoginRequestDetails
 @{
 Layout = null;
 }
@@ -48,7 +48,7 @@ Layout = null;
                            </div>
                            <input type="hidden" name="ReturnUrl" value="@Request.QueryString["ReturnUrl"]" />
                            <button type="submit" id="btnLogin" class="btn btn-primary btn-lg btn-block ml-0 mt-3"><i class="fas fa-sign-in-alt"></i>&nbsp;Login</button>
-                           <div class="ajax_loader hidden"><i class="fa fa-spinner fa-spin"></i></div>
+                           
                            <div class="text-center mt-4 mb-4">
                               <a href="#">Having trouble logging in?</a>
                            </div>
