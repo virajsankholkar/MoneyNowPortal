@@ -1,0 +1,318 @@
+@{
+ViewBag.Title = "Card Holder Overview";
+}
+<div class="row m-0">
+   <div class="col-lg-6 pl-0 float-left">
+      <ol class="breadcrumb mb-3">
+         <li class="breadcrumb-item"><a href="~/Home/CSIndex">Home</a></li>
+         <li class="breadcrumb-item active"><a href="~/CardHolder/Home">Card Holder</a></li>
+         <li class="breadcrumb-item active">Card Holder Overview</li>
+      </ol>
+   </div>
+   <div class="col-lg-6 pr-0 text-right float-left mt-0">
+      <span class="font-light">Institution Name<a href="~/Home/CSIndex" class="font-light pl-2 switch-option">(Change)</a></span>
+   </div>
+</div>
+<div class="row">
+   <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 float-left">
+      <h4 class="nav-header mt-0">NAVIGATION</h4>
+      <ul class="navbar-nav nav-stacked">
+         <li class="nav-item"><a class="nav-link" href="~/Home/CSIndex"><i class="fas fa-fw fa-home"></i> Home</a> </li>
+         <li class="nav-item submenu active">
+            <a class="nav-link collapsed py-1" href="#submenu" data-toggle="collapse" data-target="#submenu"><i class="fas fa-fw fa-user"></i>&nbsp;Card Holder<span class="float-right"><i class="more-less fas fa-angle-down mr-0"></i></span></a>
+            <div class="collapse show" id="submenu" aria-expanded="false">
+               <ul class="flex-column nav">
+                  <li class="nav-item"><a class="nav-link pl-3" href="~/CardHolder/Home"><i class="fas fa-home"></i> Dashboard</a></li>
+                  <li class="nav-item"><a class="nav-link pl-3" href="~/CardHolder/GroupList"><i class="fas fa-address-card"></i> Card Holder Group List</a></li>
+                  <li class="nav-item"><a class="nav-link pl-3" href="~/CardHolder/List"><i class="far fa-credit-card"></i> Card Holder List</a></li>
+                  <li class="nav-item"><a class="nav-link pl-3 active" href="~/CardholderOverview/Index"><i class="fas fa-id-card"></i>&nbsp;Card Holder Overview</a></li>
+               </ul>
+            </div>
+         </li>
+         <li class="nav-item"><a class="nav-link" href="~/CardBoarding/Index"><i class="fas fa-fw fa-plane"></i>&nbsp;Card Boarding</a></li>
+         <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-fw fa-credit-card"></i>&nbsp;Reporting</a></li>
+         <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-shield-alt"></i>&nbsp;Authorizations</a></li>
+         <li class="nav-item"><a class="nav-link" href="~/CSTransactions/Index"><i class="fas fas fa-street-view"></i>&nbsp;Transactions</a></li>
+         <li class="nav-item"><a class="nav-link" href="~/DisputeLogs/Index"><i class="fas fas fa-question"></i>&nbsp;Dispute Log</a></li>
+      </ul>
+   </div>
+   <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12 float-left">
+      <div class="col-md-12 col-sm-12 col-xs-12 text-right pr-0 pl-0 mb-3">
+         <div class="card text-left">
+            <div class="card-header">
+               <h5 class="mb-0">Card Holder Overview
+               </h5>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12 float-left pl-1 pr-1 panel mb-0 mt-4">
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 float-left pr-2">
+                  <div class="form-group">
+                     <label for="firstName">First Name</label>
+                     <input type="text" class="form-control" id="firstName">
+                  </div>
+               </div>
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 float-left pl-2">
+                  <div class="form-group">
+                     <label for="lastName">Last Name</label>
+                     <input type="text" class="form-control" id="lastName">
+                  </div>
+               </div>
+               <div class="clearfix"></div>
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 float-left pr-2">
+                  <div class="form-group">
+                     <label for="lastFour">Last 4</label>
+                     <input type="text" class="form-control" id="lastFour">
+                  </div>
+               </div>
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 float-left pl-2">
+                  <div class="form-group">
+                     <label for="address">Address</label>
+                     <input type="text" class="form-control" id="address">
+                  </div>
+               </div>
+               <div class="clearfix"></div>
+               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-left text-center mb-3">
+                  <div class="d-inline-block">
+                     <button type="button" class="btn btn-primary"><i class="fas fa-search"></i>&nbsp;Search</button>
+                  </div>
+               </div>
+               <div class="clearfix"></div>
+            </div>
+         </div>
+         <div class="card text-left">
+            <div class="card-header">
+               <h5 class="mb-0">Search Results
+               </h5>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12 float-left pl-0 pr-0 panel mb-0">
+               <table class="table table-transaction-overview">
+                  <tbody>
+                     <tr>
+                        <th scope="row">#</th>
+                        <th>Cards</th>
+                        <th>Accounts</th>
+                        <th class="text-center">Options</th>
+                     </tr>
+                     <tr>
+                        <td scope="row">1</td>
+                        <td>Card #1</td>
+                        <td>Checking</td>
+                        <td><button class="btn btn-primary" data-toggle="modal" data-target="#viewProgram"><i class="fas fa-eye"></i>&nbsp;View Program</button>
+                           <button class="btn btn-primary" data-toggle="modal" data-target="#viewFees"><i class="fas fa-eye"></i>&nbsp;View Fees</button>
+                           <a class="btn btn-primary" href="~/CSTransactions/Index"><i class="fas fa-street-view"></i>&nbsp;Transactions</a>
+                           <a class="btn btn-primary" href="~/DisputeLogs/Index"><i class="fas fa-question"></i>&nbsp;Dispute Log</a>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td scope="row">2</td>
+                        <td>Card #2</td>
+                        <td>Savings</td>
+                        <td><button class="btn btn-primary" data-toggle="modal" data-target="#viewProgram"><i class="fas fa-eye"></i>&nbsp;View Program</button>
+                           <button class="btn btn-primary" data-toggle="modal" data-target="#viewFees"><i class="fas fa-eye"></i>&nbsp;View Fees</button>
+                           <a class="btn btn-primary" href="~/CSTransactions/Index"><i class="fas fa-street-view"></i>&nbsp;Transactions</a>
+                           <a class="btn btn-primary" href="~/DisputeLogs/Index"><i class="fas fa-question"></i>&nbsp;Dispute Log</a>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td scope="row">3</td>
+                        <td>Card #3</td>
+                        <td>Checking</td>
+                        <td><button class="btn btn-primary" data-toggle="modal" data-target="#viewProgram"><i class="fas fa-eye"></i>&nbsp;View Program</button>
+                           <button class="btn btn-primary" data-toggle="modal" data-target="#viewFees"><i class="fas fa-eye"></i>&nbsp;View Fees</button>
+                           <a class="btn btn-primary" href="~/CSTransactions/Index"><i class="fas fa-street-view"></i>&nbsp;Transactions</a>
+                           <a class="btn btn-primary" href="~/DisputeLogs/Index"><i class="fas fa-question"></i>&nbsp;Dispute Log</a>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td scope="row">4</td>
+                        <td>Card #4</td>
+                        <td>Savings</td>
+                        <td><button class="btn btn-primary" data-toggle="modal" data-target="#viewProgram"><i class="fas fa-eye"></i>&nbsp;View Program</button>
+                           <button class="btn btn-primary" data-toggle="modal" data-target="#viewFees"><i class="fas fa-eye"></i>&nbsp;View Fees</button>
+                           <a class="btn btn-primary" href="~/CSTransactions/Index"><i class="fas fa-street-view"></i>&nbsp;Transactions</a>
+                           <a class="btn btn-primary" href="~/DisputeLogs/Index"><i class="fas fa-question"></i>&nbsp;Dispute Log</a>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- View Fees modal start-->
+<div class="modal fade" id="viewFees" role="dialog">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title"><i class="fab fa-gg-circle"></i>&nbsp;View Fees</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <table class="table">
+               <tbody>
+                  <tr>
+                     <td>Initial Card Activation Fee Retail</td>
+                     <td>&#36;2.5000+0.0000%</td>
+                     <td><span class="badge badge-enable">Enabled</span></td>
+                  </tr>
+                  <tr>
+                     <td>Initial Card Activation Fee Direct Deposit</td>
+                     <td>&#36;2.5000+0.0000%</td>
+                     <td><span class="badge badge-enable">Enabled</span></td>
+                  </tr>
+                  <tr>
+                     <td>Load Fee ACH</td>
+                     <td>&#36;2.5000+0.0000%</td>
+                     <td><span class="badge badge-disabled">Disabled</span></td>
+                  </tr>
+                  <tr>
+                     <td>Pin Change (IVR)</td>
+                     <td>&#36;2.5000+0.0000%</td>
+                     <td><span class="badge badge-disabled">Disabled</span></td>
+                  </tr>
+                  <tr>
+                     <td>Cross Border Fee</td>
+                     <td>&#36;2.5000+0.0000%</td>
+                     <td><span class="badge badge-enable">Enabled</span></td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- View Fees modal end-->
+<!-- View Program modal start-->
+<div class="modal fade" id="viewProgram" role="dialog">
+   <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title"><i class="fab fa-gg-circle"></i>&nbsp;View Program</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body p-0">
+            <div class="review-section">
+               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-left mt-3">
+                  <div class="form-group">
+                     <p><strong>Name</strong><span class="float-right">MoneyNow</span></p>
+                  </div>
+               </div>
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 float-left pr-1">
+                  <div class="form-group">
+                     <p><strong>Alias</strong><span class="float-right">MN-JA</span></p>
+                  </div>
+               </div>
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 float-left">
+                  <div class="form-group">
+                     <p><strong>Institution Id</strong><span class="float-right">1</span></p>
+                  </div>
+               </div>
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 float-left pr-1">
+                  <div class="form-group">
+                     <p><strong>Institution Name</strong><span class="float-right">Access Financial</span></p>
+                  </div>
+               </div>
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 float-left">
+                  <div class="form-group">
+                     <p><strong>Issuer</strong><span class="float-right">ICP</span></p>
+                  </div>
+               </div>
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 float-left pr-1">
+                  <div class="form-group">
+                     <p><strong>Processsor</strong><span class="float-right">ICP</span></p>
+                  </div>
+               </div>
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 float-left">
+                  <div class="form-group">
+                     <p><strong>Program Type</strong><span class="float-right">Master Card</span></p>
+                  </div>
+               </div>
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 float-left pr-1">
+                  <div class="form-group">
+                     <p><strong>Primary BIN</strong><span class="float-right">17423:99</span></p>
+                  </div>
+               </div>
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 float-left">
+                  <div class="form-group">
+                     <p><strong>Minimum PAN</strong><span class="float-right">00000000000</span></p>
+                  </div>
+               </div>
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 float-left pr-1">
+                  <div class="form-group">
+                     <p><strong>Maximum PAN</strong><span class="float-right">00000000000</span></p>
+                  </div>
+               </div>
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 float-left">
+                  <div class="form-group">
+                     <p><strong>Last PAN Used</strong><span class="float-right">0000000000</span></p>
+                  </div>
+               </div>
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 float-left pr-1">
+                  <div class="form-group">
+                     <p><strong>Next PAN</strong><span class="float-right">00000000000</span></p>
+                  </div>
+               </div>
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 float-left">
+                  <div class="form-group">
+                     <p><strong>PAN Length</strong><span class="float-right">16</span></p>
+                  </div>
+               </div>
+               <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 col-12 float-left">
+                  <h6>Card Options</h6>
+               </div>
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 float-left pr-1">
+                  <div class="form-group">
+                     <p><strong>Card Type</strong><span class="float-right">Master Card</span></p>
+                  </div>
+               </div>
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 float-left">
+                  <div class="form-group">
+                     <p><strong>Card Design</strong><span class="float-right">MoneyNow Card Design 1</span></p>
+                  </div>
+               </div>
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 float-left pr-1">
+                  <div class="form-group">
+                     <p><strong>Program Status</strong><span class="float-right badge badge-danger">Clear</span></p>
+                  </div>
+               </div>
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 float-left">
+                  <div class="form-group">
+                     <p><strong>Schedule Id</strong><span class="float-right badge badge-danger">-1</span></p>
+                  </div>
+               </div>
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 float-left pr-1">
+                  <div class="form-group">
+                     <p><strong>Is MultiBIN?</strong><span class="float-right badge badge-danger">No</span></p>
+                  </div>
+               </div>
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 float-left">
+                  <div class="form-group">
+                     <p><strong>Recycle PANs?</strong><span class="float-right badge badge-active">YES</span></p>
+                  </div>
+               </div>
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 float-left pr-1">
+                  <div class="form-group">
+                     <p><strong>Is Enabled</strong><span class="float-right badge badge-active">YES</span></p>
+                  </div>
+               </div>
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 float-left">
+                  <div class="form-group">
+                     <p><strong>Is Archived</strong><span class="float-right badge badge-danger">NO</span></p>
+                  </div>
+               </div>
+               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-left">
+                  <div class="form-group">
+                     <p><strong>Last Run Date</strong><span class="float-right">1/1/2018 12:00:00 PM</span></p>
+                  </div>
+               </div>
+               <div class="clearfix"></div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- View Program modal end-->

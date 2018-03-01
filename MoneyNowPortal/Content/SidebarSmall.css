@@ -1,0 +1,84 @@
+﻿
+.pdsa-sn-collapser-area {
+  padding: 1em;
+  margin: 1em;
+}
+
+.pdsa-sn-collapser-btn {
+  padding: .5em;
+  cursor: pointer;
+  width: 3em;
+  margin-left: 7em;
+  background-color: antiquewhite;
+  color: black;
+  opacity: 0.5;
+}
+
+  .pdsa-sn-collapser-btn:hover {
+    width: 3.5em;
+    margin-left: 6.5em;
+  }
+
+.pdsa-sn-expander-btn {
+  padding: .5em;
+  cursor: pointer;
+  width: 3em;
+  margin-left: 7em;
+  background-color: antiquewhite;
+  color: black;
+  opacity: 0.5;
+}
+
+  .pdsa-sn-expander-btn:hover {
+    width: 3.5em;
+    margin-left: 6.5em;
+  }
+
+.pdsa-sn-wrapper {
+  left: 1em;
+  transition: left 0.3s linear;
+  -moz-transition: left 0.3s linear;
+  -webkit-transition: left 0.3s linear;
+}
+
+/* The following styles are used when you programmatically collapse the sidebar */
+/* NOTE: You need to keep these the same as what are in the xs media query */
+.pdsa-sn-collapsed {
+}
+  .pdsa-sn-collapsed .pdsa-sn-wrapper {
+    left: -8em;
+  }
+
+    .pdsa-sn-collapsed .pdsa-sn-wrapper ul li a i {
+      padding-left: 9em;
+    }
+
+    .pdsa-sn-collapsed .pdsa-sn-wrapper ul li,
+    .pdsa-sn-collapsed .pdsa-sn-wrapper ul li ul li {
+      margin-top: -0.5em;
+      margin-bottom: -0.5em;
+    }
+
+  .pdsa-sn-collapsed .body-content {
+    margin-left: 4em;
+  }
+
+@media (max-width: 768px) {
+  .pdsa-sn-wrapper {
+    left: -7em;
+  }
+
+    .pdsa-sn-wrapper ul li a i {
+      padding-left: 8em;
+    }
+
+    .pdsa-sn-wrapper ul li,
+    .pdsa-sn-wrapper ul li ul li {
+      margin-top: -0.5em;
+      margin-bottom: -0.5em;
+    }
+
+  .body-content {
+    margin-left: 4em;
+  }
+}

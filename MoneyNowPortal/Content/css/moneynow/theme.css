@@ -1,0 +1,71 @@
+:root {
+    /*-------------------------------*/
+    /*     NAVBAR BACKGROUND COLOR     */
+    /*-------------------------------*/
+    --navbar-bg-color: #0d5d9c;
+    /*     BODY BACKGROUND COLOR     */
+    /*-------------------------------*/
+    --body-bg-color:#002D56;
+    /*-------------------------------*/
+    /*     FONT COLOR     */
+    /*-------------------------------*/
+    --font-color-dark: #444;
+    /*     FONT COLOR     */
+    /*-------------------------------*/
+    --font-color-light: #fff;
+    /*-------------------------------*/
+    /*    CIRCLE  BACKGROUND COLOR     */
+    /*-------------------------------*/
+    --main-bg-color: #fff;
+    /*-------------------------------*/
+    /*  HEADER BACKGROUND COLOR     */
+    /*-------------------------------*/
+    --header-color: #ccc6c6;
+    /*-------------------------------*/
+    /* CARD BACKGROUND PRIMARY COLOR */
+    /*-------------------------------*/
+    --card-background-primary: rgba(183, 183, 183, 0.7); */;
+    /*-------------------------------*/
+    /*CARD BACKGROUND SECONDARYCOLOR */
+    /*-------------------------------*/
+    --card-background-secondary: #e9e5e5;
+    /*-------------------------------*/
+    /*   ICON COLOR     */
+    /*-------------------------------*/
+    --icon-color: #2196f3;
+    /*-------------------------------*/
+    /*SETTINGS AND LOGIN ICON COLOR */
+    /*-------------------------------*/
+    --settings-login-icon-color: #fff;
+    /*-------------------------------*/
+    /*HOVER BACKGROUND COLOR */
+    /*-------------------------------*/
+    --hover-background-color: #2196f3;
+    --hover-icon-color: #fff;
+    /*-------------------------------*/
+    /*SETTING LOGIN ICONS BACKGROUND COLOR */
+    /*-------------------------------*/
+    --setting-login-background: #287abb;
+    /*-------------------------------*/
+    /*FOOTER  BACKGROUND COLOR */
+    /*-------------------------------*/
+    --footer-background: #ccc;
+    /*-------------------------------*/
+    /*VERTICAL MENUBAR BACKGROUND COLOR */
+    /*-------------------------------*/
+    --vertical-menu-bg: #444444;
+    /*-------------------------------*/
+    /*VERTICAL MENUBAR ACTIVE COLOR */
+    /*-------------------------------*/
+    --verticalmenu-active: #F4EB49;
+    /*-------------------------------*/
+    /*PANEL HEADING BACKGROUND COLOR */
+    /*-------------------------------*/
+    --panelheading-background: #2196f3;
+    --border-color: #fff;
+    /*-------------------------------*/
+    /*BUTTON PRIMARY COLOR */
+    /*-------------------------------*/
+    --btn-primary: #2196f3;
+    --btn-primary-border: #fff;
+}

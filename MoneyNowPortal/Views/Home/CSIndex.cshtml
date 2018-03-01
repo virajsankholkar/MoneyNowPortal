@@ -1,0 +1,71 @@
+@model OmniDataManagement.OmniDataItemManager
+@{
+ViewBag.Title = "Customer Service - Home";
+}
+<div class="row">
+   <div class="col-xl-6 offset-xl-6 col-lg-12 col-md-12 col-sm-12 col-12 font-light">
+      <div class="col-xl-6 float-left pr-0 mt-2 text-right">
+         <label for="accountType">Select Institution</label>
+      </div>
+      <div class="form-group col-xl-6 float-left pr-0">
+         <select class="form-control" id="institutionType">
+            <option>Institution-1</option>
+            <option>Institution-2</option>
+            <option>Institution-3</option>
+         </select>
+      </div>
+   </div>
+</div>
+<div class="row">
+   <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 mb-2">
+      <a href="~/CardHolder/Home" title="Card Holder" class="main-links">
+         <div class="card">
+            <div class="main-circle"><i class="far fa-user fa-3x"></i></div>
+            <h6 class="pt-3">Card Holder</h6>
+         </div>
+      </a>
+   </div>
+   <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 mb-2">
+      <a href="~/CardBoarding/Index" class="main-links" title="Card Boarding">
+         <div class="card">
+            <div class="main-circle"><i class="fas fa-plane fa-3x"></i></div>
+            <h6 class="pt-3">Card Boarding</h6>
+         </div>
+      </a>
+   </div>
+   <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 mb-2">
+      <a href="#" class="main-links" title="Reporting">
+         <div class="card">
+            <div class="main-circle"><i class="fas fa-chart-line fa-3x"></i></div>
+            <h6 class="pt-3">Reporting</h6>
+         </div>
+      </a>
+   </div>
+   <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 mb-2">
+      <a href="#" class="main-links" title="Authorization">
+         <div class="card">
+            <div class="main-circle"><i class="fas fa-shield-alt fa-3x"></i></div>
+            <h6 class="pt-3">Authorization</h6>
+         </div>
+      </a>
+   </div>
+   <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 mb-2">
+      <a href="~/CSTransactions/Index" class="main-links" title="Transactions">
+         <div class="card">
+            <div class="main-circle"><i class="fas fa-street-view fa-3x"></i></div>
+            <h6 class="pt-3">Transactions</h6>
+         </div>
+      </a>
+   </div>
+   <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 mb-2">
+      <a href="~/DisputeLogs/Index" class="main-links" title="Dispute log">
+         <div class="card">
+            <div class="main-circle"><i class="fas fa-question fa-3x"></i></div>
+            <h6 class="pt-3">Dispute Log</h6>
+         </div>
+      </a>
+   </div>
+</div>
+<script>
+   displayCustomBGImage();
+</script>

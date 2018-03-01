@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoneyNowPortal", "MoneyNowPortal\MoneyNowPortal.csproj", "{B97E1E5F-FF6F-4E38-BF10-DE48C6CA9F1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OmniDataManagement", "OmniDataManagement\OmniDataManagement.csproj", "{3708F3CA-F56E-44AD-B8B0-8ACFB813D961}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B97E1E5F-FF6F-4E38-BF10-DE48C6CA9F1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B97E1E5F-FF6F-4E38-BF10-DE48C6CA9F1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B97E1E5F-FF6F-4E38-BF10-DE48C6CA9F1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B97E1E5F-FF6F-4E38-BF10-DE48C6CA9F1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3708F3CA-F56E-44AD-B8B0-8ACFB813D961}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3708F3CA-F56E-44AD-B8B0-8ACFB813D961}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3708F3CA-F56E-44AD-B8B0-8ACFB813D961}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3708F3CA-F56E-44AD-B8B0-8ACFB813D961}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

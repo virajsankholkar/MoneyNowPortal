@@ -1,0 +1,145 @@
+﻿@model OmniDataManagement.OmniDataItemManager
+@{
+    ViewBag.Title = "My Cards Details";
+}
+<ol class="breadcrumb mb-3">
+    <li class="breadcrumb-item"><a href="#">Home</a></li>
+    <li class="breadcrumb-item active">@ViewBag.Title</li>
+</ol>
+<div class="row">
+    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 float-left">
+        <h4 class="nav-header mt-0">NAVIGATION</h4>
+        <ul class="navbar-nav nav-stacked">
+            <li class="nav-item"><a class="nav-link" href="~/Home/Index"><i class="fas fa-fw fa-home"></i> Home</a> </li>
+            <li class="nav-item"><a class="nav-link" href="~/AccountDetails/Index"><i class="fas fa-fw fa-building"></i> My Account</a> </li>
+            <li class="nav-item"><a class="nav-link" href="~/Transactions/Index"><i class="fas fa-fw fa-street-view"></i> Transactions</a></li>
+            <li class="nav-item active"><a class="nav-link" href="~/CardDetails/Index"><i class="fas fa-fw fa-credit-card"></i> My Cards </a></li>
+            <li class="nav-item"><a class="nav-link" href="~/Payments/Make"><i class="fas fa-shopping-cart"></i> Make Payments</a></li>
+            <li class="nav-item"><a class="nav-link" href="~/Rewards/Index"><i class="fas fa-fw fa-trophy"></i> My Rewards</a></li>
+            <li class="nav-item"><a class="nav-link" href="~/Reporting/Index"><i class="fas fa-fw fa-chart-line"></i> Reporting</a></li>
+        </ul>
+    </div>
+    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12 float-left">
+        <div class="row main-head">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-right">
+                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#request_new_card"><i class="fas fa-angle-right"></i>&nbsp;Request New Card</a>
+                <div class="modal fade" id="request_new_card" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title"><i class="far fa-check-square"></i>&nbsp;Request New Card</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form method="post">
+                                    <div class="row">
+                                        <div class="col-md-6 col-xs-12">
+                                            <div class="form-group">
+                                                <label for="accountType">Request Type </label>
+                                                <select class="form-control" id="cardRequestType">
+                                                    <option>Replacement</option>
+                                                    <option>Addon</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-xs-12">
+                                            <div class="form-group">
+                                                <label for="description">Description (optional)</label>
+                                                <textarea class="form-control" id="cardDescription"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-xs-6">
+                                            <div class="form-group">
+                                                <label for="accountName">Credit Limit</label>
+                                                <input type="text" class="form-control" value="$0.00" id="cardCreditLimit">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-xs-6">
+                                            <div class="form-group">
+                                                <label for="accountName">Daily Spending Limit</label>
+                                                <input type="text" class="form-control" value="$0.00" id="cardDailySpendingLimit">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-xs-6">
+                                            <div class="form-group">
+                                                <label for="accountName">Per Transaction Limit</label>
+                                                <input type="text" class="form-control" value="$0.00" id="cardPerTransactionLimit">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-xs-6">
+                                            <div class="form-group">
+                                                <label for="effectiveDate">Effective Date</label>
+                                                <input type='date' class="form-control" id="accountEffectiveDate" />
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary disabled"><i class="fas fa-plus"></i> Add Card</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="far fa-times-circle"></i> Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-group my-card" id="accordion" role="tablist" aria-multiselectable="true">
+            @foreach (OmniDataManagement.CardDetails item in Model.CardDetailsList)
+            {
+                <div class="panel panel-primary mb-4">
+                    <div class="panel-heading" role="tab" id="heading@(item.CardID)">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse@(item.CardID)" aria-expanded="true" aria-controls="collapse@(item.CardID)">
+                                <i class="more-less fas fa-angle-right"></i>
+                                @item.CardName Details - @item.CardNumber
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse@(item.CardID)" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading@(item.CardID)">
+                        <div class="panel-body">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-left pl-0 pr-0">
+                              <div class="card-item-list">
+                                <p>Balance<b><span class="d-block lead">@item.Balance</span></b></p>
+                                <p>Minimum Payment Due<b><span class="d-block lead">@item.MinPaymentDue</span></b></p>
+                                <p>Next Payment Date<b><span class="d-block lead">@item.NextPaymentDate</span></b></p>
+                                <p>Available Credit<b><span class="d-block lead">@item.AvailableCredit</span></b></p>
+                            </div>
+                                @if (item.IsLocked)
+                                {
+                                    <button type="button" class="btn locked btn-even btn-first" id="lockCard@(item.CardID)" onclick="LockedClicked(@(item.CardID))"><i class="fas fa-lock"></i>&nbsp;Unlock Card</button>
+                                }
+                                else
+                                {
+                                    <button type="button" class="btn btn-primary btn-even btn-first" id="lockCard@(item.CardID)" onclick="LockedClicked(@(item.CardID))"><i class="fas fa-lock"></i>&nbsp;Lock Card</button>
+                                }
+                                @if (item.IsFrozen)
+                                {
+                                    <button type="button" class="btn frozen btn-even" id="freezeCard@(item.CardID)" onclick="FreezeClicked(@(item.CardID))"><i class="far fa-stop-circle"></i>&nbsp;Unfreeze Card</button>
+                                }
+                                else
+                                {
+                                    <button type="button" class="btn btn-primary btn-even" id="freezeCard@(item.CardID)" onclick="FreezeClicked(@(item.CardID))"><i class="far fa-stop-circle"></i>&nbsp;Freeze Card</button>
+                                }
+                                @if (item.IsRestricted)
+                                {
+                                    <button type="button" class="btn restricted btn-even" id="restrictCard@(item.CardID)" onclick="RestrictClicked(@(item.CardID))"><i class="fas fa-exclamation-triangle"></i>&nbsp;Unrestrict Card</button>
+                                }
+                                else
+                                {
+                                    <button type="button" class="btn btn-primary btn-even" id="restrictCard@(item.CardID)" onclick="RestrictClicked(@(item.CardID))"><i class="fas fa-exclamation-triangle"></i>&nbsp;Restrict Card</button>
+                                }
+                                <a href="~/Transactions/Index" class="btn btn-primary btn-even"><i class="fas fa-exchange-alt"></i>&nbsp;View Transactions</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/Custom/CardDetails.js"></script>

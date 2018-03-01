@@ -1,0 +1,189 @@
+@{
+ViewBag.SiteTitle = "OmniServices Portal - MoneyNow Web Application";
+ViewBag.SiteDescription = "Welcome to the home of the MoneyNow! card program. MoneyNow! offers you the financial peace of mind that only managed payroll cards can provide.";
+ViewBag.ClientTheme = "moneynow";
+ViewBag.FooterCopyright = "Hallmark Trust";
+ViewBag.TwitterURL = "https://twitter.com/moneynow";
+ViewBag.FacebookURL = "https://www.facebook.com/pages/moneynow";
+ViewBag.YouTubeURL = "https://www.youtube.com/c/moneynow";
+ViewBag.InstagramURL = "https://instagram.com/moneynow";
+ViewBag.GooglePlusURL = "https://plus.google.com/u/0/+moneynow";
+ViewBag.BehanceURL = "https://www.behance.net/moneynow";
+}
+@*
+<!---------------------------------------------------------------------------------------
+   Theme Structure
+   ===============
+   * <client> should be replaced by respective client name (in lowercase).
+   * Every client should have theme.css, logo.png and favicon.ico
+
+   Content/
+   +
+   |---css/
+   |   |
+   |   |
+   |   +--<client>/
+   |      |
+   |      +--theme.css
+   |
+   +---images/
+       |
+       |
+       +--<client>/
+          |
+          |
+          +--logo.png
+          |
+          +--favicon.ico
+
+   --------------------------------------------------------------------------------------->
+*@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="@ViewBag.SiteDescription" />
+      <title>@ViewBag.SiteName</title>
+      <link rel="shortcut icon" href="~/Content/images/@ViewBag.ClientTheme/favicon.ico" type="image/x-icon" />
+      <link rel="stylesheet" href="~/Content/css/@ViewBag.ClientTheme/theme.css">
+      @*@Styles.Render("~/bundles/css")*@
+      <link rel="stylesheet" href="~/Content/bootstrap.css">
+      <link rel="stylesheet" href="~/Content/style.css">
+      <link rel="stylesheet" href="~/Content/site.css">
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
+      @Scripts.Render("~/bundles/js")
+      @RenderSection("scripts", required: false)
+   </head>
+   <body>
+      <!-- Header -->
+      <nav class="navbar navbar-expand-lg top-background navbar-light">
+         <div class="container">
+            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-10 float-left pl-0 pr-0">
+               <a class="navbar-brand" href="/"><img src="~/Content/images/@ViewBag.ClientTheme/logo.png" alt="logo"></a>
+               <img src="~/Content/images/mastercard-logo.svg" class="mastercard-logo" alt="mastercard-logo"><span class="main-header">@ViewBag.Title</span>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-2 float-left text-right pl-0 pr-0">
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+               </button>
+               <div class="collapse navbar-collapse" id="navbarToggle">
+                  <ul class="navbar-nav ml-auto">
+                     <li class="ml-3">
+                        <i class="fas fa-cog"></i>&nbsp;Settings
+                        @*<a href="#">
+                        <i class="fas fa-cog"></i>&nbsp;Settings
+                        </a>*@
+                     </li>
+                     @if (@Session["UserName"] != null)
+                     {
+                     <li class="dropdown ml-3">
+                        <a href="#" class="dropdown-toggle" id="about-user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user"></i>&nbsp;@Session["UserName"].ToString()
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="about-user">
+                           <a class="dropdown-item" href="~/Home/Logout"><i class="fas fa-sign-out-alt"></i>&nbsp;Logout</a>
+                        </ul>
+                     </li>
+                     }
+                     else
+                     {
+                     <li class="dropdown ml-3">
+                        <a href="#" class="dropdown-toggle" id="about-user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user"></i>&nbsp;User Name
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="about-user">
+                           <a class="dropdown-item" href="~/Home/Logout"><i class="fas fa-sign-out-alt"></i>&nbsp;Logout</a>
+                        </ul>
+                     </li>
+                     }
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </nav>
+      <!-- Body -->
+      <div class="container">
+         <div class="wrapper">
+            @RenderBody()
+         </div>
+      </div>
+      <!-- Footer -->
+      <footer>
+         <div class="container">
+            <div class="row">
+               <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12 pb-4">
+                  <img src="~/Content/images/omnicommerce-logo-201x136.png" alt="footer-logo">
+               </div>
+               <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12 pb-4">
+                  <div class="footer-main">
+                     <h6>Address</h6>
+                     <p>2639 Center Court Dr.</p>
+                     <p>Weston, FL 33332 </p>
+                  </div>
+               </div>
+               <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12 pb-4">
+                  <div class="footer-main">
+                     <h6>Contacts</h6>
+                     <p>larry.hunt@accesssalesteam.com</p>
+                     <p>Phone: +1 000 0000 001 </p>
+                     <p>Fax: +1 000 0000 002</p>
+                  </div>
+               </div>
+               <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12 pb-4">
+                  <div class="footer-main">
+                     <h6>Links</h6>
+                     <p>MoneyNow Card Program</p>
+                     <p>Terms & Conditions</p>
+                     <p>Access Financial, LLC.</p>
+                  </div>
+               </div>
+            </div>
+            <div class="row pt-3">
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                  <p>&copy; Website Copyright @DateTime.Now.Year @ViewBag.FooterCopyright - All Rights Reserved</p>
+               </div>
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 text-right social-icons-section">
+                  <div class="social-list">
+                     <span class="soc-item">
+                     <a href="@ViewBag.TwitterURL" target="_blank">
+                     <i class="fab fa-twitter"></i>
+                     </a>
+                     </span>
+                     <span class="soc-item">
+                     <a href="@ViewBag.FacebookURL" target="_blank">
+                     <i class="fab fa-facebook"></i>
+                     </a>
+                     </span>
+                     <span class="soc-item">
+                     <a href="@ViewBag.YouTubeURL" target="_blank">
+                     <i class="fab fa-youtube"></i>
+                     </a>
+                     </span>
+                     <span class="soc-item">
+                     <a href="@ViewBag.InstagramURL" target="_blank">
+                     <i class="fab fa-instagram"></i>
+                     </a>
+                     </span>
+                     <span class="soc-item">
+                     <a href="@ViewBag.GooglePlusURL" target="_blank">
+                     <i class="fab fa-google-plus"></i>
+                     </a>
+                     </span>
+                     <span class="soc-item">
+                     <a href="@ViewBag.BehanceURL" target="_blank">
+                     <i class="fab fa-behance"></i>
+                     </a>
+                     </span>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </footer>
+      @* Font Awesome (Do not bundle it.) *@
+      <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+      <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+      <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+   </body>
+</html>

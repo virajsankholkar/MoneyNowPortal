@@ -1,0 +1,421 @@
+@model OmniDataManagement.OmniDataItemManager
+@{
+ViewBag.Title = "Card Holder - List";
+}
+<div class="row m-0">
+   <div class="col-lg-6 pl-0 float-left">
+      <ol class="breadcrumb mb-3">
+         <li class="breadcrumb-item"><a href="~/Home/CSIndex">Home</a></li>
+         <li class="breadcrumb-item active"><a href="~/CardHolder/Home">Card Holder</a></li>
+         <li class="breadcrumb-item active">Card Holder List</li>
+      </ol>
+   </div>
+   <div class="col-lg-6 pr-0 text-right float-left mt-0">
+      <span class="font-light">Institution Name<a href="~/Home/CSIndex" class="font-light pl-2 switch-option">(Change)</a></span>
+   </div>
+</div>
+<div class="row">
+   <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 float-left">
+      <h4 class="nav-header mt-0">NAVIGATION</h4>
+      <ul class="navbar-nav nav-stacked">
+         <li class="nav-item"><a class="nav-link" href="~/Home/CSIndex"><i class="fas fa-fw fa-home"></i> Home</a> </li>
+         <li class="nav-item submenu active">
+            <a class="nav-link collapsed py-1" href="#submenu" data-toggle="collapse" data-target="#submenu"><i class="fas fa-fw fa-user"></i>&nbsp;Card Holder<span class="float-right"><i class="more-less fas fa-angle-down mr-0"></i></span></a>
+            <div class="collapse show" id="submenu" aria-expanded="false">
+               <ul class="flex-column nav">
+                  <li class="nav-item"><a class="nav-link pl-3" href="~/CardHolder/Home"><i class="fas fa-home"></i>&nbsp;Dashboard</a></li>
+                  <li class="nav-item"><a class="nav-link pl-3" href="~/CardHolder/GroupList"><i class="fas fa-address-card"></i>&nbsp;Card Holder Group List</a></li>
+                  <li class="nav-item"><a class="nav-link pl-3 active" href="~/CardHolder/List"><i class="far fa-credit-card"></i>&nbsp;Card Holder List</a></li>
+                  <li class="nav-item"><a class="nav-link pl-3" href="~/CardholderOverview/Index"><i class="fas fa-id-card"></i>&nbsp;Card Holder Overview</a></li>
+               </ul>
+            </div>
+         </li>
+         <li class="nav-item"><a class="nav-link" href="~/CardBoarding/Index"><i class="fas fa-fw fa-plane"></i>&nbsp;Card Boarding</a></li>
+         <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-fw fa-credit-card"></i>&nbsp;Reporting</a></li>
+         <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-shield-alt"></i>&nbsp;Authorizations</a></li>
+         <li class="nav-item"><a class="nav-link" href="~/CSTransactions/Index"><i class="fas fas fa-street-view"></i>&nbsp;Transactions</a></li>
+         <li class="nav-item"><a class="nav-link" href="~/DisputeLogs/Index"><i class="fas fas fa-question"></i>&nbsp;Dispute Log</a></li>
+      </ul>
+   </div>
+   <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12 float-left">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-right pr-0 pl-0 mb-3">
+         <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 float-left pl-0 pr-1">
+            <select class="form-control form-control-sm" id="searchSelect">
+               <option value="Search All">Search All</option>
+               <option value="First Name">First Name</option>
+               <option value="Last Name">Last Name</option>
+               <option value="Last 4">Last 4</option>
+               <option value="Group">Group</option>
+            </select>
+         </div>
+         <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 float-left pl-0 pr-0">
+            <input type="text" class="form-control" id="Search" placeholder="Enter Search Term">
+         </div>
+         <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 float-left pl-0 pr-0 text-left">
+            <a class="btn btn-primary"><i class="fas fa-search"></i>&nbsp;Search</a>
+         </div>
+         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 float-left pr-0 pl-0 text-right">
+            <a href="#" class="btn btn-primary mb-3" data-toggle="modal" data-target="#addNewCardHolder"><i class="fas fa-plus"></i> Add New Card Holder</a>
+            <div class="modal fade" id="addNewCardHolder" role="dialog">
+               <div class="modal-dialog">
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                     <div class="modal-header">
+                        <h5 class="modal-title"><i class="fas fa-plus"></i>&nbsp;Add New Card Holder</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                     </div>
+                     <div class="modal-body">
+                        <form method="post">
+                           <div class="row">
+                              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 pr-2">
+                                 <div class="form-group">
+                                    <label for="addFirstName">First Name</label>
+                                    <input type="text" class="form-control" id="addFirstName">
+                                 </div>
+                              </div>
+                              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 pl-2">
+                                 <div class="form-group">
+                                    <label for="addLastName">Last Name</label>
+                                    <input type="text" class="form-control" id="addLastName">
+                                 </div>
+                              </div>
+                              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                 <div class="form-group">
+                                    <label for="addLastFour">Last 4 </label>
+                                    <select class="form-control" id="addLastFour">
+                                       <option>option 1</option>
+                                       <option>option 2</option>
+                                       <option>option 3</option>
+                                    </select>
+                                 </div>
+                              </div>
+                              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                 <div class="form-group">
+                                    <label for="addDefaultContact">Default Contact</label>
+                                    <select class="form-control" id="addDefaultContact">
+                                       <option>option 1</option>
+                                       <option>option 2</option>
+                                       <option>option 3</option>
+                                    </select>
+                                 </div>
+                              </div>
+                              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                 <div class="form-group">
+                                    <label for="addCardholderGroup">Card Holder Group</label>
+                                    <select class="form-control" id="addCardholderGroup">
+                                       <option>option 1</option>
+                                       <option>option 2</option>
+                                       <option>option 3</option>
+                                    </select>
+                                 </div>
+                              </div>
+                              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-2 float-left">
+                                 <div class="form-group mb-0">
+                                    <label class="switch float-left">
+                                    <input type="checkbox" checked>
+                                    <span class="slider round"></span>
+                                    </label>
+                                    <label class="float-left ml-2 mr-3">Is Active</label>
+                                 </div>
+                                 <div class="form-group mb-0">
+                                    <label class="switch float-left">
+                                    <input type="checkbox" checked>
+                                    <span class="slider round"></span>
+                                    </label>
+                                    <label class="float-left ml-2">Is Enabled</label>
+                                 </div>
+                              </div>
+                        </form>
+                        </div>
+                     </div>
+                     <div class="modal-footer">
+                        <button type="button" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="far fa-times-circle"></i> Cancel</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <a href="#" class="btn btn-primary mb-3" data-toggle="modal" data-target="#chooseFile"><i class="fas fa-upload"></i> Import</a>
+         </div>
+         <!-- <div class="col-xl-3 col-lg-7 col-md-7 col-sm-7 col-12 float-left pr-0">
+            <div class="input-group mb-3">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="inputGroupFile01">
+                <i class="fas fa-upload btn-upload"></i>
+                <label class="custom-file-label" for="inputGroupFile01"></label>
+              </div>
+            </div>
+            </div> -->
+         <div class="clearfix"></div>
+         <div class="card text-left">
+            <div class="card-header">
+               <h5 class="mb-0">Card Holder's List
+               </h5>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12 float-left table-responsive panel pl-0 pr-0 mb-0">
+               <table class="table table-cardholder-list" cellspacing="0" width="100%">
+                  <thead>
+                     <th scope="row"></th>
+                     <th>First Name</th>
+                     <th>Last Name</th>
+                     <th>Last 4</th>
+                     <th>Group</th>
+                     <th>Default Contact</th>
+                     <th>Is Active</th>
+                     <th>Is Enabled</th>
+                     <th colspan="2">Actions</th>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <th scope="row" class="relative"><input type="checkbox" class="checkbox"></th>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td><span class="badge badge-active">Active</span></td>
+                        <td><span class="badge badge-enable">Enabled</span></td>
+                        <td colspan="2"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#editNewCardHolder"><i class="fa fa-edit"></i>&nbsp;Edit</a>
+                           <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#removeGroup" onclick="Remove()"><i class="fas fa-trash"></i>&nbsp;Remove</a>
+                        </td>
+                     </tr>
+                     <tr>
+                        <th scope="row" class="relative"><input type="checkbox" class="checkbox"></th>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td><span class="badge badge-inactive">InActive</span></td>
+                        <td><span class="badge badge-disabled">Disabled</span></td>
+                        <td colspan="2"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#editNewCardHolder"><i class="fa fa-edit"></i>&nbsp;Edit</a>
+                           <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#removeGroup" onclick="Remove()"><i class="fas fa-trash"></i>&nbsp;Remove</a>
+                        </td>
+                     </tr>
+                     <tr>
+                        <th scope="row" class="relative"><input type="checkbox" class="checkbox"></th>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td><span class="badge badge-active">Active</span></td>
+                        <td><span class="badge badge-enable">Enabled</span></td>
+                        <td colspan="2"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#editNewCardHolder"><i class="fa fa-edit"></i>&nbsp;Edit</a>
+                           <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#removeGroup" onclick="Remove()"><i class="fas fa-trash"></i>&nbsp;Remove</a>
+                        </td>
+                     </tr>
+                     <tr>
+                        <th scope="row" class="relative"><input type="checkbox" class="checkbox"></th>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td><span class="badge badge-inactive">InActive</span></td>
+                        <td><span class="badge badge-disabled">Disabled</span></td>
+                        <td colspan="2"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#editNewCardHolder"><i class="fa fa-edit"></i>&nbsp;Edit</a>
+                           <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#removeGroup" onclick="Remove()"><i class="fas fa-trash"></i>&nbsp;Remove</a>
+                        </td>
+                     </tr>
+                     <tr>
+                        <th scope="row" class="relative"><input type="checkbox" class="checkbox"></th>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td><span class="badge badge-inactive">InActive</span></td>
+                        <td><span class="badge badge-enable">Enabled</span></td>
+                        <td colspan="2"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#editNewCardHolder"><i class="fa fa-edit"></i>&nbsp;Edit</a>
+                           <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#removeGroup" onclick="Remove()"><i class="fas fa-trash"></i>&nbsp;Remove</a>
+                        </td>
+                     </tr>
+                     <tr>
+                        <th scope="row" class="relative"><input type="checkbox" class="checkbox"></th>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td><span class="badge badge-active">Active</span></td>
+                        <td><span class="badge badge-enable">Enabled</span></td>
+                        <td colspan="2"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#editNewCardHolder"><i class="fa fa-edit"></i>&nbsp;Edit</a>
+                           <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#removeGroup" onclick="Remove()"><i class="fas fa-trash"></i>&nbsp;Remove</a>
+                        </td>
+                     </tr>
+                     <tr>
+                        <th scope="row" class="relative"><input type="checkbox" class="checkbox"></th>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td><span class="badge badge-inactive">InActive</span></td>
+                        <td><span class="badge badge-disabled">Disabled</span></td>
+                        <td colspan="2"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#editNewCardHolder"><i class="fa fa-edit"></i>&nbsp;Edit</a>
+                           <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#removeGroup" onclick="Remove()"><i class="fas fa-trash"></i>&nbsp;Remove</a>
+                        </td>
+                     </tr>
+                     <tr>
+                        <th scope="row" class="relative"><input type="checkbox" class="checkbox"></th>
+                        <td>Data 1</td>
+                        <td>Data 2</td>
+                        <td>Data 3</td>
+                        <td>Data 4</td>
+                        <td>Data 5</td>
+                        <td><span class="badge badge-inactive">InActive</span></td>
+                        <td><span class="badge badge-enable">Enabled</span></td>
+                        <td colspan="2"><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#editNewCardHolder"><i class="fa fa-edit"></i>&nbsp;Edit</a>
+                           <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#removeGroup" onclick="Remove()"><i class="fas fa-trash"></i>&nbsp;Remove</a>
+                        </td>
+                     </tr>
+                  </tbody>
+                  <div class="modal fade" id="editNewCardHolder" role="dialog">
+                     <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                           <div class="modal-header">
+                              <h5 class="modal-title"><i class="fas fa-edit"></i>&nbsp;Edit Card Holder</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                              </button>
+                           </div>
+                           <div class="modal-body">
+                              <form method="post">
+                                 <div class="row">
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 pr-0">
+                                       <div class="form-group">
+                                          <label for="editfirstName">First Name</label>
+                                          <input type="text" class="form-control" id="editfirstName" value="First Name">
+                                       </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                       <div class="form-group">
+                                          <label for="editlastName">Last Name</label>
+                                          <input type="text" class="form-control" id="editlastName" value="Last Name">
+                                       </div>
+                                    </div>
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                       <div class="form-group">
+                                          <label for="editlastFour">Last 4 </label>
+                                          <select class="form-control" id="editlastFour">
+                                             <option>option 1</option>
+                                             <option selected>option 2</option>
+                                             <option>option 3</option>
+                                          </select>
+                                       </div>
+                                    </div>
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                       <div class="form-group">
+                                          <label for="editdefaultContact">Default Contact</label>
+                                          <select class="form-control" id="editdefaultContact">
+                                             <option>option 1</option>
+                                             <option>option 2</option>
+                                             <option selected>option 3</option>
+                                          </select>
+                                       </div>
+                                    </div>
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                       <div class="form-group">
+                                          <label for="editcardholderGroup">Card Holder Group</label>
+                                          <select class="form-control" id="editcardholderGroup">
+                                             <option>option 1</option>
+                                             <option selected>option 2</option>
+                                             <option>option 3</option>
+                                          </select>
+                                       </div>
+                                    </div>
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-2 float-left">
+                                       <div class="form-group mb-0">
+                                          <label class="switch float-left">
+                                          <input type="checkbox" checked>
+                                          <span class="slider round"></span>
+                                          </label>
+                                          <label class="float-left ml-2 mr-3">Is Active</label>
+                                       </div>
+                                       <div class="form-group mb-0">
+                                          <label class="switch float-left">
+                                          <input type="checkbox" checked>
+                                          <span class="slider round"></span>
+                                          </label>
+                                          <label class="float-left ml-2">Is Enabled</label>
+                                       </div>
+                                    </div>
+                              </form>
+                              </div>
+                           </div>
+                           <div class="modal-footer">
+                              <button type="button" class="btn btn-primary"><i class="fas fa-save"></i>&nbsp;Save</button>
+                              <button type="button" class="btn btn-default" data-dismiss="modal"><i class="far fa-times-circle"></i>&nbsp;Cancel</button>
+                           </div>
+                        </div>
+                     </div>
+               </table>
+               <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 float-left pr-1 mt-3">
+               <select class="form-control form-control-sm" id="">
+               <option value="Group1">Group1</option>
+               <option value="Group2">Group2</option>
+               <option value="Group3">Group3</option>
+               <option value="Group4">Group4</option>
+               </select>
+               </div>
+               <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12 float-left pr-0 text-left mt-3">
+               <button type="button" class="btn btn-primary"><i class="fas fa-check"></i>&nbsp;Add to Group</button>
+               </div>
+               <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7 col-12 float-left mt-3">
+               <nav aria-label="Page navigation example">
+               <ul class="pagination float-right">
+               <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+               <li class="page-item active"><a class="page-link" href="#">1</a></li>
+               <li class="page-item"><a class="page-link" href="#">2</a></li>
+               <li class="page-item"><a class="page-link" href="#">3</a></li>
+               <li class="page-item"><a class="page-link" href="#">Next</a></li>
+               </ul>
+               </nav>
+               </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- View choose file modal start-->
+   <div class="modal fade" id="chooseFile" role="dialog">
+      <div class="modal-dialog">
+         <!-- Modal content-->
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title"><i class="fas fa-upload"></i>&nbsp;Import Card Holder</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            <div class="modal-body">
+               <form action="#">
+                  <div class="text-center pt-3 pb-5">
+                     <i class="fas fa-upload fa-6x"></i>
+                  </div>
+                  <div class="input-group mb-3">
+                     <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile01">
+                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                     </div>
+                  </div>
+               </form>
+            </div>
+            <div class="modal-footer text-center d-inline-block">
+               <button type="button" class="btn btn-primary"><i class="fas fa-upload"></i> Upload</button>
+               <button type="button" class="btn btn-default" data-dismiss="modal"><i class="far fa-times-circle"></i> Cancel</button>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- choose file modal end-->
+<script>
+   function Remove() {
+       confirm("Are you sure want to Remove");
+   }
+</script>

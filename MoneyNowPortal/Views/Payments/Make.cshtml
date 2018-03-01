@@ -1,0 +1,98 @@
+﻿@model OmniDataManagement.OmniDataItemManager
+@{
+    ViewBag.Title = "Make Payment";
+}
+<ol class="breadcrumb mb-3">
+   <li class="breadcrumb-item"><a href="#">Home</a></li>
+   <li class="breadcrumb-item active">Payments</li>
+</ol>
+
+<div class="row">
+    <div class="col-md-3 col-sm-12 col-12 float-left">
+        <h4 class="nav-header mt-0">NAVIGATION</h4>
+        <ul class="navbar-nav nav-stacked">
+            <li class="nav-item"><a class="nav-link" href="~/Home/Index"><i class="fas fa-fw fa-home"></i> Home</a> </li>
+            <li class="nav-item"><a class="nav-link" href="~/AccountDetails/Index"><i class="fas fa-fw fa-building"></i> My Account</a> </li>
+            <li class="nav-item"><a class="nav-link" href="~/Transactions/Index"><i class="fas fa-fw fa-street-view"></i> Transactions</a></li>
+            <li class="nav-item"><a class="nav-link" href="~/CardDetails/Index"><i class="fas fa-fw fa-credit-card"></i> My Cards </a></li>
+            <li class="nav-item active"><a class="nav-link" href="~/Payments/Make"><i class="fas fa-shopping-cart"></i> Make Payments</a></li>
+            <li class="nav-item"><a class="nav-link" href="~/Rewards/Index"><i class="fas fa-fw fa-trophy"></i> My Rewards</a></li>
+            <li class="nav-item"><a class="nav-link" href="~/Reporting/Index"><i class="fas fa-fw fa-chart-line"></i> Reporting</a></li>
+        </ul>
+    </div>  
+    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12 float-left">        
+      <h6 class="main-header mt-sm-1">Payments are limited to Card to Card or Account to Account transfers within MoneyNow.</h6>
+      <div class="card text-left">
+         <div class="card-header">
+            <h5 class="mb-0">Select Account
+            </h5>
+         </div>
+         <div class="card-body">
+               <div class="row">
+                  <div class="col-md-6">
+                     <label>From</label>
+                     <select class="form-control">
+                        <option>Account1</option>
+                        <option>Account2</option>
+                        <option>Account3</option>
+                        <option>Account4</option>
+                     </select>
+                  </div>
+                  <div class="col-md-6">
+                     <label>To</label>
+                     <select class="form-control">
+                       <option>Account1</option>
+                       <option>Account2</option>
+                       <option>Account3</option>
+                       <option>Account4</option>
+                     </select>
+                  </div>
+               </div>
+               <div class="row mt-3">
+                  <div class="col-md-3 custom-radio-btn active">
+                     <input type="radio" name="min" id="min" checked="checked"><b>Minimum Amount Due</b>
+                  </div>
+                  <div class="col-md-2 input-group pl-0">
+                    <input type="text" class="form-control" placeholder="25" readonly aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="basic-addon2">&#36;</span>
+                    </div>
+                  </div>
+               </div>
+               <div class="row mt-3">
+                  <div class="col-md-3 custom-radio-btn">
+                        <input type="radio" name="min" id="max"><b>Other Amount</b>
+                  </div>
+                  <div class="col-md-2 input-group pl-0">
+                    <input type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2" onfocus="onEnter()">
+                    <div class="input-group-append">
+                      <span class="input-group-text" id="basic-addon2">&#36;</span>
+                    </div>
+                  </div>
+               </div>
+               <div class="mt-3"> <button type="button" class="btn btn-primary disabled" data-toggle="modal" data-target="#myModal"><i class="fas fa-shopping-cart"></i>&nbsp;Make Payment</button> </div>
+               <div class="modal fade" id="myModal1" role="dialog">
+                  <div class="modal-dialog">
+                     <!-- Modal content-->
+                     <div class="modal-content">
+                       <div class="modal-header">
+                           <h5 class="modal-title"><i class="far fa-check-square"></i>&nbsp;Transaction Processing</h5>
+                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                               <span aria-hidden="true">&times;</span>
+                           </button>
+                       </div>
+                        <div class="modal-body text-center">
+                          <div class="fa-5x">
+                            <i class="fas fa-sync fa-spin"></i>
+                          </div>
+                          <h5>Please wait while your payment is in process</h5>
+                           <p>Do not close the window or click the “Back” button.</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+</div>
+<script src="~/Scripts/Custom/MakePayment.js"></script>

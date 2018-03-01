@@ -1,0 +1,195 @@
+@model OmniDataManagement.OmniDataItemManager
+@{
+    ViewBag.Title = "My Report";
+}
+
+<ol class="breadcrumb mb-3">
+   <li class="breadcrumb-item"><a href="#">Home</a></li>
+   <li class="breadcrumb-item active">Report</li>
+</ol>
+<div class="row">
+    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 float-left">
+        <h4 class="nav-header mt-0">NAVIGATION</h4>
+        <ul class="navbar-nav nav-stacked">
+            <li class="nav-item"><a class="nav-link" href="~/Home/Index"><i class="fas fa-fw fa-home"></i> Home</a> </li>
+            <li class="nav-item"><a class="nav-link" href="~/AccountDetails/Index"><i class="fas fa-fw fa-building"></i> My Account</a> </li>
+            <li class="nav-item"><a class="nav-link" href="~/Transactions/Index"><i class="fas fa-fw fa-street-view"></i> Transactions</a></li>
+            <li class="nav-item"><a class="nav-link" href="~/CardDetails/Index"><i class="fas fa-fw fa-credit-card"></i> My Cards </a></li>
+            <li class="nav-item"><a class="nav-link" href="~/Payments/Make"><i class="fas fa-shopping-cart"></i> Make Payments</a></li>
+            <li class="nav-item"><a class="nav-link" href="~/Rewards/Index"><i class="fas fa-fw fa-trophy"></i> My Rewards</a></li>
+            <li class="nav-item active"><a class="nav-link" href="~/Reporting/Index"><i class="fas fa-fw fa-chart-line"></i> Reporting</a></li>
+        </ul>
+    </div>
+    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12 float-left">
+      <div class="card text-left">
+         <div class="card-body">
+            <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-12 float-left pl-0 pr-0">
+                                     <div class="form-group">
+                                       <div class="custom-radio-btn">
+                                         <input type="radio" name="cardType" id="cardType">
+                                       </div>
+                                       <label for="accountType">Credit Card</label>
+                                       <div class="col-xl-12 pl-0 float-left">
+                                         <select class="form-control" id="accountTypeName">
+                                             <option>Savings</option>
+                                             <option>Checking</option>
+                                             <option>Credit</option>
+                                         </select>
+                                       </div>
+                                     </div>
+             </div>
+             <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-12 float-left pl-0">
+                                      <div class="form-group">
+                                        <div class="custom-radio-btn">
+                                          <input type="radio" name="cardType" checked="checked" id="accType">
+                                        </div>
+                                          <label for="accountType">Account Type</label>
+                                          <div class="col-xl-12 pl-0 pr-0 float-left">
+                                          <select class="form-control" id="accountTypeName">
+                                              <option>Savings</option>
+                                              <option>Checking</option>
+                                              <option>Credit</option>
+                                          </select>
+                                        </div>
+                                      </div>
+              </div>
+              <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-12 float-left pl-0 pr-0 btn-custom-xlmt">
+              <button type="button" class="btn btn-primary disabled"><i class="fas fa-eye"></i>&nbsp;View</button>
+             </div>
+         </div>
+     </div>
+       <div class="card text-left">
+          <div class="card-header">
+             <h5 class="mb-0">Transactions
+             </h5>
+          </div>
+          <div class="card-body">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-12 float-left pl-0 pr-0">
+               <form>
+                  <div class="form-group col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 pl-0 float-left">
+                    <label for="amount">Amount</label>
+                    <input type="text" class="form-control" id="amount" placeholder="Amount">
+                  </div>
+                  <div class="form-group col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 pr-0 pl-0 float-left">
+                    <label for="fromDate">From Date</label>
+                    <input type="date" class="form-control" id="fromDate">
+                  </div>
+                  <div class="form-group col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 pr-0 float-left">
+                    <label for="toDate">To Date</label>
+                    <input type="date" class="form-control" id="toDate">
+                  </div>
+                  <div class="form-group col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12 pr-0 float-left">
+                    <label for="description">Description</label>
+                    <input type="text" class="form-control" id="description" placeholder="Description">
+                  </div>
+                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 float-left pl-0 pr-0 text-center">
+                  <button type="button" class="btn btn-primary  disabled""><i class="fas fa-search"></i>&nbsp;Search</button>
+                </div>
+                <div class="clearfix"></div>
+                <hr>
+                 <div class="col-xl-7 col-lg-7 col-md-7 col-sm-7 col-12 pl-0 pr-0 float-left">
+                  <h6 class="mt-0">Results</h6>
+                 <table class="table">
+                    <tbody>
+                      <tr>
+                        <th scope="row">#</th>
+                        <th>Transaction Date</th>
+                        <th>Amount</th>
+                        <th>Description</th>
+                      </tr>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>2017-12-21</td>
+                        <td>623.55</td>
+                        <td>SQ *SOFTWARE OF THIN Prior Lake MN</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>2017-12-21</td>
+                        <td>9.3532</td>
+                        <td>SQ *SOFTWARE OF THIN Prior Lake MN</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>2017-12-21</td>
+                        <td>205</td>
+                        <td>SQUARE SAN FRANCI CA</td>
+                      </tr>                   
+                    </tbody>
+                  </table>
+                     @*
+                  <div class="col-lg-12 pl-0 mt-20">
+                      <nav aria-label="Page navigation example">
+                          <ul class="pagination float-left">
+                              <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                              <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                              <li class="page-item"><a class="page-link" href="#">2</a></li>
+                              <li class="page-item"><a class="page-link" href="#">3</a></li>
+                              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                          </ul>
+                      </nav>
+                  </div>*@
+                </div>
+                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 col-12 pl-0 pr-0 float-left piechart-wrap">
+                  <canvas id="myChart"></canvas>
+                </div>
+                </form>
+             </div>
+          </div>
+       </div>
+       <div class="card text-left">
+          <div class="card-header">
+             <h5 class="mb-0">Rewards
+             </h5>
+          </div>
+          <div class="card-body">
+                   <p class="avail-points">Available Points<span class="float-right"><strong>
+                   2500</strong></span></p>
+            <div class="form-group col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 pl-0 float-left">
+              <label for="fromDate">From Date</label>
+              <input type="date" class="form-control" id="fromDate" placeholder="name@example.com">
+            </div>
+            <div class="form-group col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 pr-0 pl-0 float-left">
+              <label for="toDate">To Date</label>
+              <input type="date" class="form-control" id="toDate" placeholder="name@example.com">
+            </div>
+            <div class="form-group col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 float-left pr-0">
+            <button type="button" class="btn btn-primary btn-custom-mt  disabled""><i class="fas fa-file"></i>&nbsp;Export Reward History</button>
+          </div>
+          </div>
+      </div>
+    </div>
+</div>
+</div>
+<script src="~/Scripts/chart.js"></script>
+    <script type="text/javascript">
+    var ctx = document.getElementById("myChart").getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'pie',
+      options: {
+          responsive: true,
+          legend: {
+              position: 'bottom',
+          },
+          title: {
+              display: true,
+              text: 'Chart View'
+          },
+          animation: {
+              animateScale: true,
+              animateRotate: true
+          }
+      },
+      data: {
+        labels: ["Grocery", "Gas", "Travel"],
+        datasets: [{
+          backgroundColor: [
+            "#2ecc71",
+            "#3498db",
+            "#95a5a6"
+          ],
+          data: [12, 19, 20]
+        }]
+      }
+    });
+    </script>

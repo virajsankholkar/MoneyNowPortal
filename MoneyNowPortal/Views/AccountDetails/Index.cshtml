@@ -1,0 +1,352 @@
+﻿@model List<OmniDataManagement.CardAccountDetails>
+@{
+    ViewBag.Title = "My Account Details";
+}
+<ol class="breadcrumb mb-3">
+    <li class="breadcrumb-item"><a href="#">Home</a></li>
+    <li class="breadcrumb-item active">My Account</li>
+</ol>
+<div class="row">
+    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12 float-left">
+        <h4 class="nav-header mt-0">NAVIGATION</h4>
+        <ul class="navbar-nav nav-stacked">
+            <li class="nav-item"><a class="nav-link" href="~/"><i class="fas fa-fw fa-home"></i> Home</a> </li>
+            <li class="nav-item active"><a class="nav-link" href="~/AccountDetails/Index"><i class="fas fa-fw fa-building"></i> My Account</a> </li>
+            <li class="nav-item"><a class="nav-link" href="~/Transactions/Index"><i class="fas fa-fw fa-street-view"></i> Transactions</a></li>
+            <li class="nav-item"><a class="nav-link" href="~/CardDetails/Index"><i class="fas fa-fw fa-credit-card"></i> My Cards </a></li>
+            <li class="nav-item"><a class="nav-link" href="~/Payments/Make"><i class="fas fa-shopping-cart"></i> Make Payments</a></li>
+            <li class="nav-item"><a class="nav-link" href="~/Rewards/Index"><i class="fas fa-fw fa-trophy"></i> My Rewards</a></li>
+            <li class="nav-item"><a class="nav-link" href="~/Reporting/Index"><i class="fas fa-fw fa-chart-line"></i> Reporting</a></li>
+        </ul>
+    </div>
+    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12 float-left my-account">
+      <div class="row main-head">
+          <div class="col-md-12 col-sm-12 col-xs-12 text-right">
+              <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#request_new_account"><i class="far fa-check-square"></i> Request New Account</a>
+              <div class="modal fade" id="request_new_account" role="dialog">
+                  <div class="modal-dialog">
+                      <!-- Modal content-->
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title"><i class="far fa-check-square"></i>&nbsp;Request New Account</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                              </button>
+                          </div>
+                          <div class="modal-body">
+                              <form method="post">
+                                  <div class="row">
+                                      <div class="col-md-12 col-xs-12">
+                                          <div class="form-group">
+                                              <label for="accountName">Account Name</label>
+                                              <input type="text" class="form-control" id="accountName">
+                                              <span class="text-danger field-validation-error" data-valmsg-for="accountName" id="errAccountName"
+                                                    data-valmsg-replace="true"></span>
+                                          </div>
+                                      </div>
+                                      <div class="col-md-6 col-xs-12">
+                                          <div class="form-group">
+                                              <label for="accountType">Account Type </label>
+                                              <select class="form-control" id="accountTypeName">
+                                                  <option>Savings</option>
+                                                  <option>Checking</option>
+                                                  <option>Credit</option>
+                                              </select>
+                                          </div>
+                                      </div>
+                                      <div class="col-md-6 col-xs-12">
+                                          <div class="form-group">
+                                              <label for="effectiveDate">Effective Date</label>
+                                              <input type='date' class="form-control" id="accountEffectiveDate" />
+                                              <span class="text-danger field-validation-error" data-valmsg-for="accountName" id="errEffectiveDate"
+                                                    data-valmsg-replace="true"></span>
+                                          </div>
+                                      </div>
+                                      <div class="col-md-12 col-xs-12">
+                                          <div class="form-group">
+                                              <label for="description">Description (optional)</label>
+                                              <textarea class="form-control" id="accountDescription"></textarea>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </form>
+                          </div>
+                          <div class="modal-footer">
+                              <button type="button" class="btn btn-primary" onclick="if (validateAddNewAccountForm()) AddNewAccount(); else return false;"><i class="fas fa-user"></i> Add Account</button>
+                              <button type="button" class="btn btn-default" data-dismiss="modal"><i class="far fa-times-circle"></i> Cancel</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            @foreach (OmniDataManagement.CardAccountDetails item in Model)
+            {
+                if (item.CardID != null)
+                {
+                    <div class="panel panel-primary">
+                        <div class="panel-heading" role="tab" id="heading@(item.CardID)">
+                            <h4 class="panel-title">
+                                <a role="button" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse@(item.CardID)" aria-expanded="true" aria-controls="collapseOne">
+                                    <i class="more-less fas fa-angle-right"></i>
+                                    @item.CardName
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse@(item.CardID)" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading@(item.CardID)">
+                            <div class="panel-body">
+                                <h5 class="pl-3 pt-2">Accounts</h5>
+                                <div class="table-responsive account-table">
+                                    <table class="table">
+                                        <tbody>
+                                            @foreach (OmniDataManagement.AccountDetails item2 in item.AccountList)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        <a href="~/Transactions/Index">
+                                                            <div class="circle-bg"><i class="far fa-money-bill-alt"></i></div> @item2.AccountTypeName
+                                                        </a>
+                                                    </td>
+                                                    <td class="pt-3">@item2.AccountAlias</td>
+                                                    <td class="vertical-center">
+                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#card-edit-@(item.CardID)@(item2.AccountID)"> <i class="far fa-edit"></i> Edit</button>
+                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#card-request-change-@(item.CardID)@(item2.AccountID)"><i class="far fa-check-square"></i> Request Change Status</button>
+                                                        <!-- Modal for Edit Starts -->
+                                                        <div><input type="hidden" id="accountID@(item.CardID)@(item2.AccountID)" value="@item2.AccountID" /></div>
+                                                        <div class="modal fade" id="card-edit-@(item.CardID)@(item2.AccountID)" role="dialog">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title"><i class="far fa-edit"></i>&nbsp;Edit Name</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <div class="form-group">
+                                                                            <label for="newAccountName">New Account Name</label>
+                                                                            <input type="text" class="form-control" @*value="@item2.AccountAlias"*@ id="newAccountAliasName@(item.CardID)@(item2.AccountID)">
+                                                                            <span class="text-danger field-validation-error" data-valmsg-for="newAccountName" id="errnewAccountName@(item.CardID)@(item2.AccountID)"
+                                                                                  data-valmsg-replace="true"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-primary" onclick="if (validateUpdateAccountAliasForm(@(item.CardID)@(item2.AccountID))) UpdateAccountAlias(@(item.CardID)@(item2.AccountID)); else return false;"><i class="fas fa-save"></i>&nbsp;Update</button>
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="far fa-times-circle"></i>&nbsp;Close</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Modal for Edit Ends -->
+                                                        <!-- Modal for Change Status Starts -->
+                                                        <div class="modal fade" id="card-request-change-@(item.CardID)@(item2.AccountID)" role="dialog">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title"><i class="far fa-check-square"></i>&nbsp;Request Change Status</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div><input type="hidden" id="accountID@(item.CardID)@(item2.AccountID)" value="@item2.AccountID" /></div>
+                                                                    <div class="modal-body">
+                                                                        <form method="post">
+                                                                            <div class="row">
+                                                                                <div class="col-md-6 col-xs-12">
+                                                                                    <div class="form-group">
+                                                                                        <label>Type of Account:</label>
+                                                                                        <p>@item2.AccountTypeName</p>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6 col-xs-12">
+                                                                                    <div class="form-group">
+                                                                                        <label>Account Name:</label>
+                                                                                        <p>@item2.AccountAlias</p>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6 col-xs-12">
+                                                                                    <div class="form-group">
+                                                                                        <label for="typeOfChange">Type of Change:</label>
+                                                                                        <select class="form-control" id="accountTypeOfChange@(item.CardID)@(item2.AccountID)" required>
+                                                                                            <option>On Hold</option>
+                                                                                            <option>Close</option>
+                                                                                            <option>Restricted</option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6 col-xs-12">
+                                                                                    <div class="form-group">
+                                                                                        <label for="effectiveDate">With Effective from:</label>
+                                                                                        <input type="date" class="form-control" id="accountEffectiveDate@(item.CardID)@(item2.AccountID)" required />
+                                                                                        <span class="text-danger field-validation-error" data-valmsg-for="accountEffectiveDate@(item.CardID)@(item2.AccountID)" id="errEffectiveDate@(item.CardID)@(item2.AccountID)"
+                                                                                              data-valmsg-replace="true"></span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-12 col-xs-12">
+                                                                                    <div class="form-group">
+                                                                                        <label for="description">Description/Comments: </label>
+                                                                                        <textarea class="form-control" id="accountDescription@(item.CardID)@(item2.AccountID)"></textarea>
+                                                                                        <span class="text-danger field-validation-error" data-valmsg-for="accountDescription@(item.CardID)@(item2.AccountID)" id="errAccountDescription@(item.CardID)@(item2.AccountID)"
+                                                                                              data-valmsg-replace="true"></span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-primary" onclick="if (validateChangeRequestForm(@(item.CardID)@(item2.AccountID))) RequestCardAccountChangeStatus(@(item.CardID)@(item2.AccountID)); else return false; "><i class="fas fa-paper-plane"></i> Submit</button>
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="far fa-times-circle"></i> Cancel</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Modal for Change Status Ends -->
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <!--  Accounts Section Starts -->
+                    <!--<div class="panel panel-primary panel-1">
+                        <div id="collapse1" class="panel-collapse collapse in">-->
+                    <h5 class="main-header mt-2">Accounts</h5>
+                        <div class="table-responsive panel account-table">
+                            <table class="table">
+                                <tbody>
+                                    @foreach (OmniDataManagement.AccountDetails item2 in item.AccountList)
+                                        {
+                                        <tr>
+                                            <td>
+                                                <a href="~/Transactions/Index">
+                                                    <div class="circle-bg"><i class="fas fa-dollar-sign"></i></div> @item2.AccountTypeName
+                                                </a>
+                                            </td>
+                                            <td class="align-center-style name-style">@item2.AccountAlias</td>
+                                            <td class="vertical-center">
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#accounts-edit-@(item.CardID)@(item2.AccountID)"> <i class="far fa-edit"></i> Edit</button>
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#accounts-request-change-@(item.CardID)@(item2.AccountID)"><i class="far fa-check-square"></i> Request Change Status</button>
+                                                <!-- Modal for Edit Starts -->
+                                                <div class="modal fade" id="accounts-edit-@(item.CardID)@(item2.AccountID)" role="dialog">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title"><i class="far fa-edit"></i>&nbsp;Edit Name</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="form-group">
+                                                                    <label for="newAccountName">New Account Name</label>
+                                                                    <input type="text" class="form-control" @*value="@item2.AccountAlias"*@ id="newAccountAliasName@(item.CardID)@(item2.AccountID)">
+                                                                    <span class="text-danger field-validation-error" data-valmsg-for="newAccountName" id="errnewAccountName@(item.CardID)@(item2.AccountID)"
+                                                                          data-valmsg-replace="true"></span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-primary" onclick="if (validateUpdateAccountAliasForm(@(item.CardID)@(item2.AccountID))) UpdateAccountAlias(@(item.CardID)@(item2.AccountID)); else return false;"><i class="fas fa-save"></i>&nbsp;Update</button>
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="far fa-times-circle"></i>&nbsp;Close</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Modal for Edit Ends -->
+                                                <!-- Modal for Change Status Starts -->
+                                                <div class="modal fade" id="accounts-request-change-@(item.CardID)@(item2.AccountID)" role="dialog">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title"><i class="far fa-check-square"></i>&nbsp;Request Change Status</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div><input type="hidden" id="accountID@(item.CardID)@(item2.AccountID)" value="@item2.AccountID" /></div>
+                                                            <div class="modal-body">
+                                                                <form method="post">
+                                                                    <div class="row">
+                                                                        <div class="col-md-6 col-xs-12">
+                                                                            <div class="form-group">
+                                                                                <label>Type of Account:</label>
+                                                                                <p>@item2.AccountTypeName</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6 col-xs-12">
+                                                                            <div class="form-group">
+                                                                                <label>Account Name:</label>
+                                                                                <p>@item2.AccountAlias</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6 col-xs-12">
+                                                                            <div class="form-group">
+                                                                                <label for="typeOfChange">Type of Change Required:</label>
+                                                                                <select class="form-control" id="accountTypeOfChange@(item.CardID)@(item2.AccountID)" required>
+                                                                                    <option>On Hold</option>
+                                                                                    <option>Close</option>
+                                                                                    <option>Restricted</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6 col-xs-12">
+                                                                            <div class="form-group">
+                                                                                <label for="effectiveDate">With effective from:</label>
+                                                                                <input type="date" class="form-control" id="accountEffectiveDate@(item.CardID)@(item2.AccountID)" required />
+                                                                                <span class="text-danger field-validation-error" data-valmsg-for="accountEffectiveDate@(item2.AccountID)" id="errEffectiveDate@(item2.AccountID)"
+                                                                                      data-valmsg-replace="true"></span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-12 col-xs-12">
+                                                                            <div class="form-group">
+                                                                                <label for="description">Description/Comments: </label>
+                                                                                <textarea class="form-control" id="accountDescription@(item.CardID)@(item2.AccountID)" rows="3"></textarea>
+                                                                                <span class="text-danger field-validation-error" data-valmsg-for="accountDescription@(item.CardID)@(item2.AccountID)" id="errAccountDescription@(item.CardID)@(item2.AccountID)"
+                                                                                      data-valmsg-replace="true"></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-primary" onclick="if (validateChangeRequestForm(@(item.CardID)@(item2.AccountID))) RequestAccountChangeStatus(@(item.CardID)@(item2.AccountID)); else return false;"><i class="fas fa-paper-plane"></i> Submit</button>
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="far fa-times-circle"></i> Cancel</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- Modal for Change Status Ends -->
+                                            </td>
+                                        </tr>
+                                        }
+                                </tbody>
+                            </table>
+                        </div>
+                            <!-- </div>
+                    </div> -->
+                    <!--  Accounts Section Ends -->
+                }
+            }
+</div>
+    </div>
+</div>
+<div class="modal fade" id="getCodeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel"> Accounts Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body" id="getCode" style="overflow-x:">
+                //ajax success content here.
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/Custom/AccountDetails.js"></script>
